@@ -23,16 +23,21 @@ public class GeneralUtility {
         Integer deadVillagers = 1;
         Integer tempNum1 = 0, tempNum2 = 1, tempSum = 1;
 
-        // looping this calculation until reach intended year
-        for (int x = 1; x < year; x++) {
-            // get fibonacci number per looping
-            tempSum = tempNum1 + tempNum2;
-            tempNum1 = tempNum2;
-            tempNum2 = tempSum;
+        // check if year = 0, then no villager has been dead yet (deadVillagers = 0)
+        if (year == 0)
+            return 0;
+        else {
+            // looping this calculation until reach intended year
+            for (int x = 1; x < year; x++) {
+                // get fibonacci number per looping
+                tempSum = tempNum1 + tempNum2;
+                tempNum1 = tempNum2;
+                tempNum2 = tempSum;
 
-            // increase number of deadVillagers by desired fibonacci number as looping continue
-            deadVillagers = deadVillagers + tempSum;
-            // System.out.println("dead villagers on year " + x + " : " + deadVillagers + " villagers.");
+                // increase number of deadVillagers by desired fibonacci number as looping continue
+                deadVillagers = deadVillagers + tempSum;
+                // System.out.println("dead villagers on year " + x + " : " + deadVillagers + " villagers.");
+            }
         }
 
         return deadVillagers;
