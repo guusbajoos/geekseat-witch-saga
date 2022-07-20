@@ -26,6 +26,8 @@ public class GeneralUtility {
         // check if year = 0, then no villager has been dead yet (deadVillagers = 0)
         if (year == 0)
             return 0;
+        else if (year < 0)
+            throw new IllegalArgumentException("Year cannot be less than zero!");
         else {
             // looping this calculation until reach intended year
             for (int x = 1; x < year; x++) {
