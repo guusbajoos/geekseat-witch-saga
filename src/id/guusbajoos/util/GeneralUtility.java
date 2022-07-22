@@ -1,5 +1,9 @@
 package id.guusbajoos.util;
 
+import id.guusbajoos.entity.PersonIdentity;
+
+import java.util.List;
+
 public class GeneralUtility {
 
     // this function is intended to get how many died villagers based on inputted integer year
@@ -48,15 +52,31 @@ public class GeneralUtility {
     // this function is intended to get the average number of people the witch killed on year of birth of those people
 
     // ANALYSIS :
-    // first number of dead villagers will be added with second number of dead villagers, and it will divided by 2 to get average number
+    // first number of dead villagers will be added with second number of dead villagers, and it will be divided by 2 to get average number
     // this average number will be used as magic incantation by villager to make the witch leave the village
     //   param :
     //     firstNum : first inputted integer to represent how many villagers has been killed by the witch
     //     secondNum : second inputted integer to represent how many villagers has been killed by the witch
     //   output :
-    //     year : how many died villagers based on inputted integer year
+    //     average number of dead villager from two person
     public Double getAverageNumber(Integer firstNum, Integer secondNum) {
 
         return (double) (firstNum + secondNum) / 2;
+    }
+
+    // ANALYSIS :
+    // sum of all dead villagers in list person identity will be divided by how much person are included in this program to get average number
+    // this average number will be used as magic incantation by villager to make the witch leave the village
+    //   param :
+    //     personIdentityList : list of personIdentity
+    //   output :
+    //     average number of dead villager from how much person are included in this list
+    public Double getAverageNumberInList(List<PersonIdentity> personIdentityList) {
+        Integer sum = 0;
+        for (int x = 0; x < personIdentityList.size(); x++) {
+            sum = sum + personIdentityList.get(x).getDiedVillagers();
+        }
+
+        return (double) sum / personIdentityList.size();
     }
 }
