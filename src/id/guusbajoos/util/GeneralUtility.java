@@ -22,19 +22,20 @@ public class GeneralUtility {
     //     year : inputted integer to represent year which year witch did her nasty work
     //   output :
     //     deadVillagers : how many died villagers based on inputted integer year
-    public Integer countDeadVillagers(Integer year) {
+    public void countDeadVillagers(PersonIdentity personIdentity) {
         // define some variables that will be used in this function
         Integer deadVillagers = 1;
         Integer tempNum1 = 0, tempNum2 = 1, tempSum = 1;
 
         // check if year = 0, then no villager has been dead yet (deadVillagers = 0)
-        if (year == 0)
-            return 0;
-        else if (year < 0)
+        if (personIdentity.getYearOfBorn() == 0) {
+            personIdentity.setDiedVillagers(0);
+        }
+        else if (personIdentity.getYearOfBorn() < 0)
             throw new IllegalArgumentException("Year cannot be less than zero!");
         else {
             // looping this calculation until reach intended year
-            for (int x = 1; x < year; x++) {
+            for (int x = 1; x < personIdentity.getYearOfBorn(); x++) {
                 // get fibonacci number per looping
                 tempSum = tempNum1 + tempNum2;
                 tempNum1 = tempNum2;
@@ -44,9 +45,8 @@ public class GeneralUtility {
                 deadVillagers = deadVillagers + tempSum;
                 // System.out.println("dead villagers on year " + x + " : " + deadVillagers + " villagers.");
             }
+            personIdentity.setDiedVillagers(deadVillagers);
         }
-
-        return deadVillagers;
     }
 
     // this function is intended to get the average number of people the witch killed on year of birth of those people
