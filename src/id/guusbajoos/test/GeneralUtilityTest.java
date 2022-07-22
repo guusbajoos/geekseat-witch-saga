@@ -1,5 +1,6 @@
 package id.guusbajoos.test;
 
+import id.guusbajoos.entity.PersonIdentity;
 import id.guusbajoos.util.GeneralUtility;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,27 +13,41 @@ import static org.junit.jupiter.api.Assertions.*;
 class GeneralUtilityTest {
 
     GeneralUtility generalUtility = new GeneralUtility();
+    PersonIdentity personIdentity = new PersonIdentity();
 
     @Test
     @DisplayName("Count number of dead villager if year > 0")
     void countDeadVillagersIfYearMoreThanZero() {
-        assertEquals(1, generalUtility.countDeadVillagers(1));
-        assertEquals(2, generalUtility.countDeadVillagers(2));
-        assertEquals(4, generalUtility.countDeadVillagers(3));
-        assertEquals(7, generalUtility.countDeadVillagers(4));
-        assertEquals(12, generalUtility.countDeadVillagers(5));
+        personIdentity.setYearOfBorn(1);
+        generalUtility.countDeadVillagers(personIdentity);
+        assertEquals(1, personIdentity.getDiedVillagers());
+        personIdentity.setYearOfBorn(2);
+        generalUtility.countDeadVillagers(personIdentity);
+        assertEquals(2, personIdentity.getDiedVillagers());
+        personIdentity.setYearOfBorn(3);
+        generalUtility.countDeadVillagers(personIdentity);
+        assertEquals(4, personIdentity.getDiedVillagers());
+        personIdentity.setYearOfBorn(4);
+        generalUtility.countDeadVillagers(personIdentity);
+        assertEquals(7, personIdentity.getDiedVillagers());
+        personIdentity.setYearOfBorn(5);
+        generalUtility.countDeadVillagers(personIdentity);
+        assertEquals(12, personIdentity.getDiedVillagers());
     }
 
     @Test
     @DisplayName("Count number of dead villager if year = 0")
     void countDeadVillagersIfYearEqualZero() {
-        assertEquals(0, generalUtility.countDeadVillagers(0));
+        personIdentity.setYearOfBorn(0);
+        generalUtility.countDeadVillagers(personIdentity);
+        assertEquals(0, personIdentity.getDiedVillagers());
     }
 
     @Test
     @DisplayName("Count number of dead villager if year < 0")
     void countDeadVillagersIfYearLessThanZero() {
-        assertThrows(IllegalArgumentException.class, () -> generalUtility.countDeadVillagers(-1));
+        personIdentity.setYearOfBorn(-1);
+        assertThrows(IllegalArgumentException.class, () -> generalUtility.countDeadVillagers(personIdentity));
     }
 
 

@@ -74,7 +74,7 @@ public class MainApplication {
 
                 // get year of born and died villagers baes on person's year of death and age of death
                 personIdentity.setYearOfBorn(personIdentity.getYearOfDeath() - personIdentity.ageOfDeath);
-                personIdentity.setDiedVillagers(generalUtility.countDeadVillagers(personIdentity.getYearOfBorn()));
+                generalUtility.countDeadVillagers(personIdentity);
 
                 System.out.println("Person #" + x + " died on year " + personIdentity.getYearOfDeath() + " in age " + personIdentity.getAgeOfDeath() + " years old. So the person #" + x + " is born on year " + personIdentity.getYearOfBorn());
                 System.out.println("On year " + personIdentity.getYearOfBorn() + ", " + personIdentity.getDiedVillagers() + " has been killed by witch.");
