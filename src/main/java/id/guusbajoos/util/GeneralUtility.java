@@ -1,10 +1,20 @@
 package id.guusbajoos.util;
 
 import id.guusbajoos.entity.PersonIdentity;
+import id.guusbajoos.entity.ResponseEntity;
 
 import java.util.List;
 
 public class GeneralUtility {
+
+    public static final Double ERROR_VALUE = -1.0;
+    public static final Double ZERO_KILLING_VALUE = 0.0;
+    public static final String ERROR_MISSING_PARAMETER = "REQUEST PARAM IS MISSING";
+    public static final String ERROR_NEGATIVE_AGE_PARAMETER = "NEGATIVE NUMBER FOR AGE DETECTED";
+    public static final String ERROR_NEGATIVE_YEAR_PARAMETER = "NEGATIVE NUMBER FOR YEAR DETECTED";
+    public static final String ERROR_BORN_BEFORE_ZERO_PARAMETER = "THERE ARE VILLAGERS THAT BORN BEFORE THE WITCH TOOK CONTROL THE VILLAGE";
+    public static final String WARNING_ZERO_KILLING_PARAMETER = "NO VILLAGER HAS BEEN KILLED YET BY THE WITCH";
+    public static final String SUCCESS_PARAMETER = "SUCCESS";
 
     // this function is intended to get how many died villagers based on inputted integer year
     // REQUIREMENT :
@@ -78,5 +88,20 @@ public class GeneralUtility {
         }
 
         return (double) sum / personIdentityList.size();
+    }
+
+    // generating success response
+    public void generateSuccessMessage(ResponseEntity responseEntity, Double value) {
+        responseEntity.setValue(value);
+        if (value == ZERO_KILLING_VALUE)
+            responseEntity.setMessage(WARNING_ZERO_KILLING_PARAMETER);
+        else
+            responseEntity.setMessage(SUCCESS_PARAMETER);
+    }
+
+    // generating error response
+    public void generateErrorMessage(ResponseEntity responseEntity, String error) {
+        responseEntity.setValue(ERROR_VALUE);
+        responseEntity.setMessage(error);
     }
 }
