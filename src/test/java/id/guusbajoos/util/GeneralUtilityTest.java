@@ -1,14 +1,11 @@
-package id.guusbajoos.test;
+package id.guusbajoos.util;
 
 import id.guusbajoos.entity.PersonIdentity;
-import id.guusbajoos.util.GeneralUtility;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GeneralUtilityTest {
 
