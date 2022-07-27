@@ -1,4 +1,4 @@
-package id.guusbajoos.main;
+package id.guusbajoos.runconsole;
 
 import id.guusbajoos.entity.PersonIdentity;
 import id.guusbajoos.util.GeneralUtility;
@@ -86,7 +86,7 @@ public class MainApplication {
             // find the average number of people the witch killed on year of birth of those people
             Double averageNum = generalUtility.getAverageNumberInList(listPerson);
             if (averageNum == 0.0) {
-                System.out.println("Since all persons  born in year 0, no villager has been killed yet by the witch.");
+                System.out.println("Since all persons born in year 0, no villager has been killed yet by the witch.");
             } else
                 System.out.println("Average number as magic incantation to make the witch leave = " + averageNum);
 
